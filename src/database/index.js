@@ -9,8 +9,9 @@ const DB_PASSWORD = process.env.DB_PASSWORD;
 const url = `mongodb+srv://${DB_USER}:${DB_PASSWORD}@cluster0.j7jaulh.mongodb.net/?retryWrites=true&w=majority`;
 
 async function connect() {
-    await mongoose.connect(url, { useNewUrlParser: true });
-    console.log('Conectado ao banco de dados');
+    mongoose.connect(url, { useNewUrlParser: true })
+    .then(() => console.log('Conectado ao banco de dados'))
+    .catch((err) => console.log('Erro ao se conectar ao banco de dados!'));
   }
 
 export default connect;
